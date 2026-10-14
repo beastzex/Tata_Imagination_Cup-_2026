@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-void: #FFFFFF;
+    --panel-surface: #F8FAFC;
+    --text-primary: #0F1E36;
+    --tata-blue: #005691;
+    --tata-blue-dark: #003B66;
+    --tata-navy: #07162C;
+    --tata-sky: #00A3E0;
+    --tata-blue-light: #EBF6FC;
+    --tata-blue-subtle: #F4F9FD;
+    --tata-gold: #F59E0B;
+    --border-hairline: #DCE8F6;
+
+    /* Theme color tokens */
+    --brand-navy: #003B66;
+    --brand-blue: #00A3E0;
+    --brand-blue-dark: #07162C;
+    --brand-blue-light: #EBF6FC;
+    --brand-blue-subtle: #F4F9FD;
+  }
+
+  /* Make scrollbars invisible everywhere while preserving smooth scrolling functionality */
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  html, body {
+    background-color: #FFFFFF;
+    color: #0F1E36;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.015em;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Headline typography with Tata authoritative weight */
+  .font-headline {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Monospace tabular numbers for banking/financial displays */
+  .font-telemetry {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: "tnum" 1, "zero" 1;
+  }
+}
+
+/* Hairline utility */
+.border-hairline {
+  border-color: #E2E8F0;
+}
+
+/* Gradients */
+.text-gradient-tata {
+  background: linear-gradient(135deg, #005691 0%, #00A3E0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Spotlight Border-Beam glow on light background */
+@keyframes borderBeam {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.saffron-beam-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 1.5px;
+  background: #E2E8F0;
+}
+
+.saffron-beam-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0 320deg, #00A3E0 360deg);
+  animation: rotateBeam 4s linear infinite;
+}
+
+@keyframes rotateBeam {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saffron-beam-container::before {
+    animation: none;
+    background: #00A3E0;
+    opacity: 0.3;
+  }
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

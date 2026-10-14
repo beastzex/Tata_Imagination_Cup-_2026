@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tata-dukaan-saathi
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GROQ_API_KEY
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        sync: false
+      - key: TWILIO_VOICE_NUMBER
+        sync: false
+      - key: NEXT_PUBLIC_BACKEND_URL
+        value: "http://localhost:4000"
